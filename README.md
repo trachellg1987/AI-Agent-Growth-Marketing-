@@ -4,7 +4,7 @@
 
 # AI growth agents for marketers: B2B Value Added Services
 
-[![validate](https://github.com/trachellg1987/AI-growth-agents-for-chellebelle/actions/workflows/validate.yml/badge.svg)](https://github.com/trachellg1987/AI-growth-agents-for-chellebelle/actions/workflows/validate.yml)
+[![validate](https://github.com/trachellg1987/AI-Agent-Growth-Marketing-/actions/workflows/validate.yml/badge.svg)](https://github.com/trachellg1987/AI-Agent-Growth-Marketing-/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Ten small, tested agentic workflows for a **B2B Value Added Services (VAS) marketing team**:

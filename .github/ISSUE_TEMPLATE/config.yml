@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Questions and ideas
-    url: https://github.com/trachellg1987/AI-growth-agents-for-chellebelle/discussions
+    url: https://github.com/trachellg1987/AI-Agent-Growth-Marketing-/discussions
     about: Ask questions or share agent ideas in Discussions.
   - name: Security issue
-    url: https://github.com/trachellg1987/AI-growth-agents-for-chellebelle/blob/main/SECURITY.md
+    url: https://github.com/trachellg1987/AI-Agent-Growth-Marketing-/blob/main/SECURITY.md
     about: Please do not open a public issue for security problems.
