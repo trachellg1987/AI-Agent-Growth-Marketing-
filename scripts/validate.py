@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 AGENT_DIR = re.compile(r"^(\d{2})-[a-z0-9]+(-[a-z0-9]+)*$")
 REQUIRED_ROOT_FILES = [
-    "README.md", "LICENSE", "CONTRIBUTING.md", "CHANGELOG.md", "SECURITY.md", "Makefile",
+    "README.md", "CONTRIBUTING.md", "CHANGELOG.md", "SECURITY.md", "Makefile",
     "requirements.txt", ".gitignore", ".env.example", ".markdownlint.json",
     "common/llm.py", "images/banner.svg", "skills/README.md", "skills/SKILL-TEMPLATE.md",
     "case-studies/README.md", "case-studies/_template.md",

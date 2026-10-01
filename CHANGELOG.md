@@ -6,6 +6,10 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Removed
+
+- The MIT LICENSE file. No license is granted; all rights reserved.
+
 ## [0.2.0] - 2026-10-01
 
 ### Changed

@@ -5,7 +5,6 @@
 # AI growth agents for marketers: B2B Value Added Services
 
 [![validate](https://github.com/trachellg1987/AI-Agent-Growth-Marketing-/actions/workflows/validate.yml/badge.svg)](https://github.com/trachellg1987/AI-Agent-Growth-Marketing-/actions/workflows/validate.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Ten small, tested agentic workflows for a **B2B Value Added Services (VAS) marketing team**:
 client briefs, persona messaging, campaign briefs with claims approval, client-program
@@ -144,4 +143,4 @@ The idea of a numbered, folder-per-agent course for marketers is inspired by
 
 ## Author
 
-Trachell Trice ([LinkedIn](https://www.linkedin.com/in/trachell1234/)). Released under the [MIT License](LICENSE).
+Trachell Trice ([LinkedIn](https://www.linkedin.com/in/trachell1234/)). No license is granted; all rights reserved.
