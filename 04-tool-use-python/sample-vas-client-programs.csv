@@ -1,0 +1,13 @@
+client_id,client_type,vas_product,status,start_date,source
+C001,regional_issuer,Risk Scoring Service,active,2025-02-03,account_manager
+C002,regional_issuer,Risk Scoring Service,active,2025-04-14,workshop
+C003,large_issuer,Risk Scoring Service,active,2024-11-18,account_manager
+C004,fintech,Risk Scoring Service,inactive,2025-01-20,webinar
+C005,acquirer,Dispute Management Tool,active,2025-03-10,account_manager
+C006,merchant,Dispute Management Tool,active,2025-05-05,email
+C007,acquirer,Dispute Management Tool,inactive,2024-09-09,webinar
+C008,large_issuer,Analytics Dashboard,active,2024-08-26,workshop
+C009,regional_issuer,Analytics Dashboard,inactive,2024-12-02,email
+C010,fintech,Analytics Dashboard,active,2025-06-16,webinar
+C011,regional_issuer,Card Controls API,active,2025-07-07,account_manager
+C012,fintech,Card Controls API,inactive,2025-02-24,email

@@ -1,0 +1,7 @@
+segment,variant,visitors,conversions
+fintech_acquirers,A,400,20
+fintech_acquirers,B,400,44
+regional_issuers,A,500,30
+regional_issuers,B,500,33
+large_issuers,A,300,30
+large_issuers,B,300,12
