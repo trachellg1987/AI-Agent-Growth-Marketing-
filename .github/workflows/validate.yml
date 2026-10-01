@@ -1,0 +1,35 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Offline tests (validate, unit, references, examples, smoke)
+        run: make test
+
+      - name: Install SDKs for the API contract test
+        run: python -m pip install -r requirements.txt
+
+      - name: API contract test (local fake server, no real API calls)
+        run: make test-api
+
+      - name: Lint
+        run: make lint

@@ -1,0 +1,4 @@
+# Model SDKs. Only needed for live runs and `make test-api`.
+# `make test` (validate, unit, smoke) uses the standard library only.
+anthropic>=1.0,<2
+openai>=1.0

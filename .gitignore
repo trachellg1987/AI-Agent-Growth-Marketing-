@@ -1,0 +1,24 @@
+# Secrets: never commit real keys
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Node (markdownlint via npx)
+node_modules/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Your own data: keep real client exports out of git
+data/
+*.local.csv
