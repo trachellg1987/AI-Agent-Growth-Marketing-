@@ -4,7 +4,7 @@
 
 # AI growth agents for marketers: B2B Value Added Services
 
-[![validate](https://github.com/OWNER/ai-growth-agents-for-marketers/actions/workflows/validate.yml/badge.svg)](https://github.com/OWNER/ai-growth-agents-for-marketers/actions/workflows/validate.yml)
+[![validate](https://github.com/trachellg1987/AI-growth-agents-for-chellebelle/actions/workflows/validate.yml/badge.svg)](https://github.com/trachellg1987/AI-growth-agents-for-chellebelle/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Ten small, tested agentic workflows for a **B2B Value Added Services (VAS) marketing team**:
@@ -144,4 +144,4 @@ The idea of a numbered, folder-per-agent course for marketers is inspired by
 
 ## Author
 
-YOUR_FULL_NAME (YOUR_LINK). Released under the [MIT License](LICENSE).
+Trachell Trice ([LinkedIn](https://www.linkedin.com/in/trachell1234/)). Released under the [MIT License](LICENSE).
