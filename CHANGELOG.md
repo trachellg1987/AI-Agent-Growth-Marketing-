@@ -6,6 +6,19 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Agent-ready services kit: README thesis (WebMCP + Visa Intelligent Commerce), docs/GROWTH-STRATEGY.md,
+  docs/WEBMCP-EXPLAINED.md, docs/VISA-INTELLIGENT-COMMERCE-EXPLAINED.md, IMPLEMENTATION-GUIDE.md,
+  CASE-STUDIES.md and docs/README-STRUCTURE.md.
+- examples/: annotated WebMCP tools for a fictional agency, merchant-side payment acceptance in
+  TypeScript, ChatGPT (MCP apps) and Claude integration guides, and a runnable Claude agent script.
+- webmcp-skills/ (four tool definitions) and visa-ic-skills/ (agent-side VIC templates).
+
+### Changed
+
+- The previous README moved to docs/AGENT-LIBRARY.md.
+
 ### Removed
 
 - The MIT LICENSE file. No license is granted; all rights reserved.

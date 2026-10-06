@@ -1,146 +1,122 @@
 <p align="center">
-  <img src="images/banner.svg" alt="AI Growth Agents for B2B VAS Marketers" width="100%">
+  <img src="images/banner.svg" alt="AI Growth Agents for marketers" width="100%">
 </p>
 
-# AI growth agents for marketers: B2B Value Added Services
+# AI-Native Growth: WebMCP + Visa Intelligent Commerce for Marketing Services
 
 [![validate](https://github.com/trachellg1987/AI-Agent-Growth-Marketing-/actions/workflows/validate.yml/badge.svg)](https://github.com/trachellg1987/AI-Agent-Growth-Marketing-/actions/workflows/validate.yml)
 
-Ten small, tested agentic workflows for a **B2B Value Added Services (VAS) marketing team**:
-client briefs, persona messaging, campaign briefs with claims approval, client-program
-analysis, a Planner-Writer-Critic chain, backward planning, offer-test analysis, capacity
-planning, and a pre-launch review for agent prompts.
+**Sites like visapaymentsfrontier.io are already live with WebMCP tools. AI agents can discover
+services, ask questions, and submit leads without scraping a single button. And Visa and its partners
+have already completed real agent-initiated payments. Are your marketing services ready?**
 
-Three rules run through every agent:
+This repo is a playbook and starter kit for marketing agencies, SaaS vendors, consultancies and
+freelancers who want to be **discoverable by AI agents** (WebMCP) and **payable by AI agents**
+(Visa Intelligent Commerce).
 
-1. **Code does the math, the model explains.** Numbers are computed in plain Python and
-   passed to the model in a `COMPUTED` block. The model never recomputes them.
-2. **Unknowns are labeled, not guessed.** Missing facts come back as `[UNKNOWN: ...]`;
-   missing proof as `[CLAIM NEEDS SUBSTANTIATION]`.
-3. **A human approves anything client-facing.** Drafts are drafts until a person, and
-   legal/compliance for any claim, signs off.
+> **Independent project.** Not affiliated with, endorsed by, or built with any confidential information
+> from Visa, Anthropic, OpenAI or any other company. Visa is referenced only through public sources,
+> which are linked. Fictional companies and all illustrative numbers are labeled as such.
 
-> **Disclaimer.** This is an independent portfolio project. It is not affiliated with,
-> endorsed by, or built with any confidential information from Visa or any other company.
-> All clients, products, and numbers are fictional, and every example is labeled
-> ILLUSTRATIVE. Product names such as "Risk Scoring Service" are generic and fictional.
+## The problem
 
-## What VAS means here
+AI agents increasingly do the first round of vendor research for people. But a marketing agency's
+website was built for human eyes:
 
-In payments, value added services are sold business-to-business: the clients are
-**issuers** (banks, credit unions), **acquirers**, **merchants**, and **fintechs**, and the
-buyers are roles like head of fraud/risk, head of cards, head of payments, and procurement.
+- **Agents have to guess.** To find out whether an agency does SEO for e-commerce brands under
+  $5,000 a month, an agent must read pages, click menus and fill forms meant for people. That is
+  slow and it breaks when the page changes.
+- **There's no standard menu of capabilities.** Every site describes its services differently, so
+  agents can't compare agencies reliably.
+- **There's no trusted way to pay.** Even when an agent finds the right service, handing it a raw card
+  number is a security problem, and merchants can't tell a trusted agent from a malicious bot.
 
-For a public reference point, Visa's Form 10-K for the fiscal year ended September 30, 2025
-describes its value-added services as four portfolios: **Issuing Solutions, Acceptance
-Solutions, Risk and Security Solutions, and Advisory and Other Services**
-([FY2025 Form 10-K on SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1403161/000140316125000089/v-20250930.htm)).
-The fiscal 2024 10-K used five categories (Issuing Solutions, Acceptance Solutions, Risk and
-Identity Solutions, Open Banking Solutions, and Advisory Services). This repo uses those
-public category names only to organize fictional examples.
+## The solution
 
-## The agents
+Two open building blocks, used together:
 
-| # | Agent | What it does | Type |
-| --- | --- | --- | --- |
-| 01 | [Prompt basics](01-prompt-basics/) | Client meeting brief from account-manager notes | prompt |
-| 02 | [Context engineering](02-context-engineering/) | Persona value propositions grounded in a context file | prompt |
-| 03 | [Campaign brief](03-campaign-brief/) | Client-facing campaign brief with a compliance and claims-approval checklist | prompt |
-| 04 | [Tool use with Python](04-tool-use-python/) | Live vs inactive client programs per VAS product; model sees counts, not rows | Python |
-| 05 | [Multi-agent workflow](05-multi-agent-workflow/) | Planner, Writer, Critic chain; the Critic checks claims, confidentiality, and consent | Python |
-| 06 | [Content repurposing](06-content-repurposing/) | One client webinar into account-manager talking points, a nurture email, and a recap | prompt |
-| 07 | [Planning agent](07-planning-agent/) | Backward plan for new signed clients, with a feasibility flag | Python |
-| 08 | [A/B test analyzer](08-ab-test-analyzer/) | Offer test by client segment (free pilot vs ROI assessment) | Python |
-| 09 | [VAS planning agent](09-vas-planning-agent/) | Grow live client programs net of attrition; channel mix cheapest-first | Python |
-| 10 | [Agents in production](10-agents-in-production/) | Static checks plus model review of an agent prompt before launch | Python |
+| Layer | What it does | In one sentence |
+| --- | --- | --- |
+| **[WebMCP](docs/WEBMCP-EXPLAINED.md)** | Discovery and actions | Your website hands agents a menu of tools (`discover_seo_services`, `submit_agency_inquiry`) instead of making them guess at buttons. |
+| **[Visa Intelligent Commerce](docs/VISA-INTELLIGENT-COMMERCE-EXPLAINED.md)** | Trusted payment | Agents pay with agent-specific tokenized credentials that the cardholder authorized with a passkey, and merchants can verify the agent. |
 
-Each folder has a `README.md`, a `prompt.md`, and an `example-output.md`. For the Python
-agents, `prompt.md` is the exact prompt generated by `--dry-run`, and the computed blocks in
-`example-output.md` are real output that `make test` re-checks on every run.
+**Discovery + trusted payment = an agent-ready marketing service.**
 
-## Quick start
+## The opportunity
+
+- Gartner predicts that by 2028 **one-third of interactions with generative AI services** will use
+  action models and autonomous agents to complete tasks
+  ([Gartner, March 2024](https://www.gartner.com/en/newsroom/press-releases/2024-03-11-gartner-predicts-one-third-of-interactions-with-genai-services-will-use-action-models-and-autonomous-agents-for-task-completion-by-2028)).
+- Gartner also expects AI agents to intermediate **more than $15 trillion of B2B purchases by 2028**
+  ([Digital Commerce 360, November 2025](https://www.digitalcommerce360.com/2025/11/28/gartner-ai-agents-15-trillion-in-b2b-purchases-by-2028/)).
+  Marketing services are a B2B purchase.
+- Visa reports **more than 100 partners** working on agentic commerce, **over 30 building in the
+  Visa Intelligent Commerce sandbox**, and **over 20 agents and agent enablers** integrating directly
+  ([Visa, December 2025](https://investor.visa.com/news/news-details/2025/Visa-and-Partners-Complete-Secure-AI-Transactions-Setting-the-Stage-for-Mainstream-Adoption-in-2026/default.aspx)).
+
+The gap: agents and payment rails are arriving faster than **services that agents can actually find and
+buy**. [GROWTH-STRATEGY.md](docs/GROWTH-STRATEGY.md) explains why closing that gap is a growth lever.
+
+## Real example: visapaymentsfrontier.io
+
+[visapaymentsfrontier.io](https://visapaymentsfrontier.io) is listed in the public
+[WebMCP directory](https://webmcp.com/) as a live site exposing **two WebMCP tools**. As described in this
+repo's brief, they are `ask_site` (an agent asks about the site's services and case studies) and
+`submit_contact_lead` (an agent submits a lead on a person's behalf).
+
+That pair is the pattern this repo teaches: **one tool to answer questions, one tool to capture
+intent.** See [CASE-STUDIES.md](CASE-STUDIES.md#case-study-1-visapaymentsfrontierio) for what it shows
+and what it doesn't (no results have been published).
+
+## Quick start: get your service agent-ready in 3 weeks
+
+| Week | You do | Start from |
+| --- | --- | --- |
+| 1 | Register WebMCP tools: services, case studies, pricing, inquiry | [examples/marketing-agency-webmcp-tools.json](examples/marketing-agency-webmcp-tools.json) |
+| 2 | Set up payment acceptance through your acquirer or processor, in the sandbox | [examples/marketing-agency-visa-ic-integration.ts](examples/marketing-agency-visa-ic-integration.ts) |
+| 3 | Connect both, test end to end with an agent, go live | [IMPLEMENTATION-GUIDE.md](IMPLEMENTATION-GUIDE.md) |
+
+Three weeks assumes a lead-capture launch (discovery plus inquiries). Taking agent payments also depends
+on your processor's onboarding timeline, which this repo can't shorten.
+
+## Table of contents
+
+| Document | For | What you get |
+| --- | --- | --- |
+| [docs/GROWTH-STRATEGY.md](docs/GROWTH-STRATEGY.md) | Growth, partnerships, leadership | Why partner readiness is the lever, the flywheel, GTM tactics, metrics |
+| [docs/WEBMCP-EXPLAINED.md](docs/WEBMCP-EXPLAINED.md) | Everyone | WebMCP in plain English, vs MCP vs browser automation, code |
+| [docs/VISA-INTELLIGENT-COMMERCE-EXPLAINED.md](docs/VISA-INTELLIGENT-COMMERCE-EXPLAINED.md) | Everyone | How agents pay safely: tokens, passkeys, agent verification |
+| [IMPLEMENTATION-GUIDE.md](IMPLEMENTATION-GUIDE.md) | Developers | Week-by-week integration plan and go-live checklist |
+| [CASE-STUDIES.md](CASE-STUDIES.md) | Everyone | visapaymentsfrontier.io plus two illustrative partner scenarios |
+| [examples/](examples/) | Developers | Tool definitions, payment integration, ChatGPT and Claude walkthroughs |
+| [webmcp-skills/](webmcp-skills/) | Developers | Ready-to-adapt WebMCP tool definitions |
+| [visa-ic-skills/](visa-ic-skills/) | Developers | Payment function templates (merchant side and agent side) |
+| [docs/README-STRUCTURE.md](docs/README-STRUCTURE.md) | Everyone | Repo map and "start here" paths |
+
+## Also in this repo: the B2B VAS marketing agent library
+
+Ten tested agent workflows for a B2B Value Added Services marketing team (client briefs, offer-test
+analysis, backward planning, a pre-launch prompt review), built on one rule: **code does the math, the
+model explains, a human approves.** See [docs/AGENT-LIBRARY.md](docs/AGENT-LIBRARY.md).
 
 ```bash
-make setup                 # install the model SDKs (only needed for live runs)
-make test                  # validate, unit tests, reference check, example check, smoke test
-make list                  # list agents
-
-# No API key needed:
-make run AGENT=08-ab-test-analyzer ARGS="--csv 08-ab-test-analyzer/sample-ab-results.csv --stats-only"
-make run AGENT=05-multi-agent-workflow ARGS="--dry-run"
-
-# Live run: copy .env.example to .env, add a key, then load it into your shell
-set -a; . ./.env; set +a
-make run AGENT=08-ab-test-analyzer
+make test   # validate, unit tests, reference check, example check, smoke test (no API key needed)
 ```
 
-Providers: Anthropic (`ANTHROPIC_API_KEY`, default model `claude-opus-5-5`) or OpenAI
-(`OPENAI_API_KEY`, with `LLM_PROVIDER=openai`). Override models with `ANTHROPIC_MODEL` or
-`OPENAI_MODEL`. See [`common/llm.py`](common/llm.py).
+## Key sources
 
-## How it works
+- WebMCP draft specification: [webmachinelearning.github.io/webmcp](https://webmachinelearning.github.io/webmcp/)
+  and [github.com/webmachinelearning/webmcp](https://github.com/webmachinelearning/webmcp)
+- Visa Intelligent Commerce: [developer.visa.com](https://developer.visa.com/capabilities/visa-intelligent-commerce)
+  and Visa's open-source toolkit [github.com/visa/ai](https://github.com/visa/ai)
+- Model Context Protocol: [modelcontextprotocol.io](https://modelcontextprotocol.io)
+- Anthropic, a Visa Intelligent Commerce launch partner:
+  [Visa press release, April 2025](https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.21361.html)
 
-```text
-  CSV / arguments --> Python (skills/*/scripts) --> COMPUTED block --+
-                                                                     +--> model --> draft --> human approval
-  .agents/*.md context ----------------------------------------------+
-```
+## Credits and author
 
-- [`common/llm.py`](common/llm.py) holds the shared `RULES` added to every system prompt:
-  use only computed numbers, label unknowns, no confidential information about any real
-  company or client, no performance claims unless supplied, no competitor disparagement.
-- [`skills/`](skills/) holds 13 reusable procedures. The math lives in skill scripts, once:
-  A/B statistics are only in
-  [`skills/ab-test-analyzer/scripts/ab_stats.py`](skills/ab-test-analyzer/scripts/ab_stats.py).
-- [`.agents/`](.agents/) holds two context templates (product marketing, growth metrics) with
-  `[FILL IN]` placeholders for your own facts.
-- `--dry-run` prints the exact prompt and makes no network call. `--stats-only` (or
-  `--static-only` for agent 10) prints only what code computed.
-
-More detail: [docs/DESIGN-DECISIONS.md](docs/DESIGN-DECISIONS.md).
-
-## Testing
-
-| Command | What it checks | Calls a model? |
-| --- | --- | --- |
-| `make validate` | Folder structure, ILLUSTRATIVE labels, skill front matter, `[FILL IN]` placeholders, off-topic (non-B2B) terms, secrets | No |
-| `make unit` | Unit tests for the statistics, planning math, summaries, and prompt checks | No |
-| `make refs` | Links, script paths, and make targets in the docs exist | No |
-| `make examples` | Every computed block in the docs matches a fresh run | No |
-| `make smoke` | Every agent's `--help`, `--dry-run`, and `--stats-only` cases, plus clean error messages | No |
-| `make test-api` | Agents 04, 05, 08 against a local fake Anthropic/OpenAI server | No (local fake) |
-| `make lint` | markdownlint and Python byte-compile | No |
-
-## Case studies
-
-[case-studies/](case-studies/): an offer test by client segment (agent 08) and a backward
-plan for live client programs (agent 09). Both are ILLUSTRATIVE.
-
-## Repo map
-
-```text
-.agents/          context templates ([FILL IN])
-01-...10-...      agents
-case-studies/     worked, illustrative examples
-common/           shared model helper and skill loader
-docs/             design decisions
-images/           banner
-scripts/          validate, smoke test, example check, scaffold, API contract test
-skills/           13 skills; math in skills/*/scripts
-tests/            unit tests and reference check
-```
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Start a new agent with
-`make scaffold NAME=my-agent PYTHON=1`.
-
-## Credits
-
-The idea of a numbered, folder-per-agent course for marketers is inspired by
+The numbered, folder-per-agent course format of the agent library is inspired by
 [thaolst/ai-growth-agents-for-marketers](https://github.com/thaolst/ai-growth-agents-for-marketers)
-(MIT License). This repo is rewritten for B2B VAS marketing.
-
-## Author
+(MIT License).
 
 Trachell Trice ([LinkedIn](https://www.linkedin.com/in/trachell1234/)). No license is granted; all rights reserved.

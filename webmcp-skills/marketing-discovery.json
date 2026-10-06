@@ -1,0 +1,96 @@
+{
+  "$comment": "WebMCP tool definition. Register with document.modelContext.registerTool({ ...definition, execute }) after removing '$comment' and 'examples' if your library rejects extra keys. 'examples' show agents and developers the expected shape; all example data is fictional (ILLUSTRATIVE). WebMCP is a draft: https://webmachinelearning.github.io/webmcp/",
+  "name": "discover_marketing_services",
+  "title": "Discover marketing services",
+  "description": "Find this provider's marketing services that match a service type, monthly budget and industry. Returns packages with prices and what each includes. Read-only: does not contact anyone, create a lead, or take payment.",
+  "annotations": { "readOnlyHint": true },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "service_type": {
+        "type": "string",
+        "enum": ["seo", "ppc", "content", "email", "social", "analytics", "cro"],
+        "description": "The kind of marketing help needed. 'cro' is conversion-rate optimization."
+      },
+      "budget": {
+        "type": "number",
+        "minimum": 0,
+        "description": "Maximum monthly budget, in the currency below."
+      },
+      "currency": {
+        "type": "string",
+        "enum": ["USD", "EUR", "GBP"],
+        "default": "USD"
+      },
+      "industry": {
+        "type": "string",
+        "enum": ["ecommerce", "b2b_saas", "financial_services", "healthcare", "local_services", "other"],
+        "description": "The buyer's industry. Use 'other' if none fit."
+      },
+      "goal": {
+        "type": "string",
+        "maxLength": 500,
+        "description": "Optional: what success looks like, in the person's words."
+      }
+    },
+    "required": ["service_type", "budget"],
+    "additionalProperties": false
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "matches": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "package_id": { "type": "string" },
+            "name": { "type": "string" },
+            "monthly_price": { "type": "number" },
+            "currency": { "type": "string" },
+            "includes": { "type": "array", "items": { "type": "string" } },
+            "minimum_term_months": { "type": "integer" },
+            "purchasable_by_agent": { "type": "boolean" },
+            "details_url": { "type": "string", "format": "uri" }
+          },
+          "required": ["package_id", "name", "monthly_price", "currency", "purchasable_by_agent"]
+        }
+      },
+      "no_match_reason": { "type": "string" }
+    },
+    "required": ["matches"]
+  },
+  "examples": [
+    {
+      "input": { "service_type": "seo", "budget": 5000, "industry": "ecommerce" },
+      "output": {
+        "matches": [
+          {
+            "package_id": "seo-ecom-growth",
+            "name": "E-commerce SEO Growth",
+            "monthly_price": 3500,
+            "currency": "USD",
+            "includes": ["Technical audit", "Product-page optimization", "Monthly report"],
+            "minimum_term_months": 3,
+            "purchasable_by_agent": true,
+            "details_url": "https://agency.example/seo/ecommerce-growth"
+          },
+          {
+            "package_id": "seo-ecom-scale",
+            "name": "E-commerce SEO Scale",
+            "monthly_price": 4800,
+            "currency": "USD",
+            "includes": ["Everything in Growth", "Content production", "Link outreach"],
+            "minimum_term_months": 6,
+            "purchasable_by_agent": false,
+            "details_url": "https://agency.example/seo/ecommerce-scale"
+          }
+        ]
+      }
+    },
+    {
+      "input": { "service_type": "ppc", "budget": 300, "industry": "b2b_saas" },
+      "output": { "matches": [], "no_match_reason": "Paid-media management starts at 1500 USD per month." }
+    }
+  ]
+}

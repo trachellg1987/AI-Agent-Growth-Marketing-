@@ -1,0 +1,66 @@
+{
+  "$comment": "WebMCP tool definition that compares this provider's own plans and add-ons. It does not describe competitors. All example data is fictional (ILLUSTRATIVE).",
+  "name": "compare_pricing",
+  "title": "Compare plans and add-ons",
+  "description": "Compare this provider's plans or add-ons for a stated need and return the cheapest option that meets it. Read-only: does not change the plan or take payment. Covers this provider's own offers only.",
+  "annotations": { "readOnlyHint": true },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "need": {
+        "type": "object",
+        "properties": {
+          "tracked_keywords": { "type": "integer", "minimum": 0 },
+          "seats": { "type": "integer", "minimum": 1 },
+          "reports_per_month": { "type": "integer", "minimum": 0 }
+        },
+        "additionalProperties": false,
+        "description": "Minimum capacity required."
+      },
+      "billing_period": { "type": "string", "enum": ["monthly", "annual"], "default": "monthly" },
+      "currency": { "type": "string", "enum": ["USD", "EUR", "GBP"], "default": "USD" }
+    },
+    "required": ["need"],
+    "additionalProperties": false
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "options": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "offer_id": { "type": "string" },
+            "kind": { "type": "string", "enum": ["plan", "add_on"] },
+            "name": { "type": "string" },
+            "price": { "type": "number" },
+            "billing_period": { "type": "string" },
+            "meets_need": { "type": "boolean" },
+            "purchasable_by_agent": { "type": "boolean" }
+          },
+          "required": ["offer_id", "kind", "name", "price", "meets_need", "purchasable_by_agent"]
+        }
+      },
+      "cheapest_meeting_need": { "type": "string", "description": "offer_id of the cheapest option that meets the need, if any." },
+      "currency": { "type": "string" },
+      "prices_valid_until": { "type": "string", "format": "date" }
+    },
+    "required": ["options", "currency"]
+  },
+  "examples": [
+    {
+      "input": { "need": { "tracked_keywords": 1500, "seats": 3 } },
+      "output": {
+        "options": [
+          { "offer_id": "plan-growth", "kind": "plan", "name": "Growth", "price": 199, "billing_period": "monthly", "meets_need": false, "purchasable_by_agent": true },
+          { "offer_id": "addon-kw-500", "kind": "add_on", "name": "+500 tracked keywords", "price": 49, "billing_period": "monthly", "meets_need": true, "purchasable_by_agent": true },
+          { "offer_id": "plan-pro", "kind": "plan", "name": "Pro", "price": 399, "billing_period": "monthly", "meets_need": true, "purchasable_by_agent": true }
+        ],
+        "cheapest_meeting_need": "addon-kw-500",
+        "currency": "USD",
+        "prices_valid_until": "2026-12-31"
+      }
+    }
+  ]
+}

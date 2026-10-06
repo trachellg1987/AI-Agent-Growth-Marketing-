@@ -1,0 +1,61 @@
+{
+  "$comment": "WebMCP tool definition for retrieving campaign analytics. Returns aggregates only, never individual-level records. All example data is fictional (ILLUSTRATIVE).",
+  "name": "retrieve_campaign_analytics",
+  "title": "Retrieve campaign analytics",
+  "description": "Return aggregate performance metrics for the signed-in account's campaigns over a date range. Read-only. Returns totals and rates only, never individual-level data.",
+  "annotations": { "readOnlyHint": true },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "campaign_ids": {
+        "type": "array",
+        "items": { "type": "string" },
+        "maxItems": 20,
+        "description": "Campaigns to include. Omit for all active campaigns."
+      },
+      "start_date": { "type": "string", "format": "date" },
+      "end_date": { "type": "string", "format": "date" },
+      "metrics": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": { "type": "string", "enum": ["spend", "impressions", "clicks", "leads", "revenue", "ctr", "cost_per_lead", "roas"] },
+        "default": ["spend", "clicks", "leads", "cost_per_lead"]
+      },
+      "group_by": { "type": "string", "enum": ["campaign", "channel", "week"], "default": "campaign" }
+    },
+    "required": ["start_date", "end_date"],
+    "additionalProperties": false
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "currency": { "type": "string" },
+      "rows": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "group": { "type": "string" },
+            "metrics": { "type": "object", "additionalProperties": { "type": "number" } }
+          },
+          "required": ["group", "metrics"]
+        }
+      },
+      "data_freshness": { "type": "string", "description": "When the data was last updated, ISO 8601." }
+    },
+    "required": ["rows", "data_freshness"]
+  },
+  "examples": [
+    {
+      "input": { "start_date": "2026-09-01", "end_date": "2026-09-30", "metrics": ["spend", "leads", "cost_per_lead"], "group_by": "channel" },
+      "output": {
+        "currency": "USD",
+        "rows": [
+          { "group": "search", "metrics": { "spend": 12000, "leads": 240, "cost_per_lead": 50 } },
+          { "group": "social", "metrics": { "spend": 6000, "leads": 80, "cost_per_lead": 75 } }
+        ],
+        "data_freshness": "2026-10-01T06:00:00Z"
+      }
+    }
+  ]
+}

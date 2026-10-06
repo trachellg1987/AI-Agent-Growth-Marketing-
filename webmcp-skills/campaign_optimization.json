@@ -1,0 +1,73 @@
+{
+  "$comment": "WebMCP tool definition for a SaaS marketing tool. Returns recommendations only; applying changes is a separate, confirmed action. All example data is fictional (ILLUSTRATIVE).",
+  "name": "optimize_campaign",
+  "title": "Recommend campaign optimizations",
+  "description": "Analyze one campaign in the signed-in account and return ranked recommendations with the metric each is based on. Read-only: does not change budgets, bids or ads. Requires the person to be signed in on this site.",
+  "annotations": { "readOnlyHint": true },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "campaign_id": { "type": "string", "description": "Campaign ID from retrieve_campaign_analytics." },
+      "objective": {
+        "type": "string",
+        "enum": ["lower_cost_per_lead", "more_leads", "more_revenue", "better_roas"],
+        "description": "What to optimize for."
+      },
+      "lookback_days": { "type": "integer", "enum": [7, 14, 30, 90], "default": 30 },
+      "max_recommendations": { "type": "integer", "minimum": 1, "maximum": 10, "default": 5 }
+    },
+    "required": ["campaign_id", "objective"],
+    "additionalProperties": false
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "campaign_id": { "type": "string" },
+      "recommendations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "action": { "type": "string" },
+            "reason": { "type": "string" },
+            "evidence_metric": { "type": "string" },
+            "evidence_value": { "type": "number" },
+            "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+            "requires_purchase": {
+              "type": "boolean",
+              "description": "True if acting on it needs a paid add-on; the agent must get approval before buying."
+            }
+          },
+          "required": ["action", "reason", "confidence", "requires_purchase"]
+        }
+      },
+      "caveats": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["campaign_id", "recommendations"]
+  },
+  "examples": [
+    {
+      "input": { "campaign_id": "cmp_123", "objective": "lower_cost_per_lead", "lookback_days": 30 },
+      "output": {
+        "campaign_id": "cmp_123",
+        "recommendations": [
+          {
+            "action": "Pause the 'broad - generic' ad group",
+            "reason": "It spent 31% of budget and produced 8% of leads in the last 30 days.",
+            "evidence_metric": "share_of_spend",
+            "evidence_value": 0.31,
+            "confidence": "high",
+            "requires_purchase": false
+          },
+          {
+            "action": "Track 500 more keywords to cover new product pages",
+            "reason": "The plan limit is reached, so 140 product pages are untracked.",
+            "confidence": "medium",
+            "requires_purchase": true
+          }
+        ],
+        "caveats": ["Recommendations use the last 30 days only; seasonal campaigns may differ."]
+      }
+    }
+  ]
+}

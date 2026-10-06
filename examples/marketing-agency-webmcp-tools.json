@@ -1,0 +1,255 @@
+{
+  "$comment": "WebMCP tool definitions for a fictional marketing agency ('Northwind Growth Co.'). JSON has no comments, so explanations live in '$comment' keys, which JSON Schema reserves for notes and validators ignore. Register each entry with document.modelContext.registerTool({...definition, execute}) - see docs/WEBMCP-EXPLAINED.md. Strip '$comment' and 'x-' keys first if your WebMCP library rejects unknown fields. WebMCP is a draft spec; check https://webmachinelearning.github.io/webmcp/ before shipping.",
+  "agency": {
+    "name": "Northwind Growth Co. (fictional)",
+    "$comment": "Illustrative example. Replace every value with your own services, prices and policies."
+  },
+  "tools": [
+    {
+      "name": "discover_seo_services",
+      "title": "Find SEO packages",
+      "description": "List this agency's SEO packages that fit a goal, monthly budget and timeframe. Read-only: does not contact anyone or create a lead.",
+      "$comment": "Descriptions are read by agents to choose a tool, so state what it does AND what it does not do.",
+      "annotations": { "readOnlyHint": true },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "maxLength": 500,
+            "description": "What the person wants, in their words, e.g. 'rank for product pages on a Shopify store'.",
+            "$comment": "Free text lets the agent pass nuance the structured fields miss."
+          },
+          "monthly_budget_usd": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Maximum monthly spend in US dollars.",
+            "$comment": "Units in the field name prevent the agent from sending '5k' or euros."
+          },
+          "timeframe_months": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 36,
+            "default": 6,
+            "description": "How long the engagement should run."
+          },
+          "industry": {
+            "type": "string",
+            "enum": ["ecommerce", "b2b_saas", "financial_services", "healthcare", "local_services", "other"],
+            "description": "Client industry. Use 'other' if none fit.",
+            "$comment": "Enums stop agents inventing categories you can't match."
+          }
+        },
+        "required": ["query", "monthly_budget_usd"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "packages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "package_id": { "type": "string" },
+                "name": { "type": "string" },
+                "monthly_price_usd": { "type": "number" },
+                "minimum_term_months": { "type": "integer" },
+                "includes": { "type": "array", "items": { "type": "string" } },
+                "details_url": { "type": "string", "format": "uri" }
+              },
+              "required": ["package_id", "name", "monthly_price_usd"]
+            }
+          },
+          "no_match_reason": {
+            "type": "string",
+            "$comment": "When nothing fits, say why (e.g. 'minimum budget is $2,000/month') so the agent can adjust instead of guessing."
+          }
+        }
+      }
+    },
+    {
+      "name": "discover_ppc_services",
+      "title": "Find paid-media (PPC) packages",
+      "description": "List paid-media management packages for the given ad channels, monthly budget and industry. Read-only.",
+      "annotations": { "readOnlyHint": true },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "channels": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "enum": ["search", "shopping", "social", "display", "video", "linkedin"] },
+            "description": "Ad channels the person wants managed."
+          },
+          "monthly_management_budget_usd": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Budget for the agency's management fee, in US dollars.",
+            "$comment": "Kept separate from ad spend: agents (and people) often confuse the two."
+          },
+          "monthly_ad_spend_usd": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Expected media spend paid to ad platforms, in US dollars. Used to recommend a tier."
+          },
+          "industries": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["ecommerce", "b2b_saas", "financial_services", "healthcare", "local_services", "other"] },
+            "description": "Industries the campaigns serve."
+          }
+        },
+        "required": ["channels", "monthly_management_budget_usd"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "packages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "package_id": { "type": "string" },
+                "name": { "type": "string" },
+                "channels": { "type": "array", "items": { "type": "string" } },
+                "management_fee_usd": { "type": "number" },
+                "fee_model": { "type": "string", "enum": ["flat_monthly", "percent_of_spend", "hybrid"] }
+              },
+              "required": ["package_id", "name", "fee_model"]
+            }
+          },
+          "no_match_reason": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "get_case_studies",
+      "title": "Get case studies",
+      "description": "Return published, client-approved case studies for a service type and industry. Read-only. Only returns material the client has approved for public use.",
+      "$comment": "Never return unapproved client names or results: an agent will repeat whatever you return.",
+      "annotations": { "readOnlyHint": true },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service_type": { "type": "string", "enum": ["seo", "ppc", "content", "analytics", "email"] },
+          "industry": { "type": "string", "enum": ["ecommerce", "b2b_saas", "financial_services", "healthcare", "local_services", "other"] },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 5, "default": 3 }
+        },
+        "required": ["service_type"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "case_studies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "summary": { "type": "string" },
+                "approved_claims": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "$comment": "Only claims your legal/compliance team approved, verbatim. Agents quote these."
+                },
+                "url": { "type": "string", "format": "uri" }
+              },
+              "required": ["title", "summary", "url"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "get_pricing",
+      "title": "Get pricing tiers",
+      "description": "Return current price tiers for a service and scope. Read-only. Prices are in US dollars and exclude tax unless stated.",
+      "$comment": "Exact, current prices are what make an agent willing to recommend you. Include terms, not just numbers.",
+      "annotations": { "readOnlyHint": true },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service_type": { "type": "string", "enum": ["seo", "ppc", "content", "analytics", "email"] },
+          "scope": {
+            "type": "string",
+            "enum": ["starter", "growth", "enterprise"],
+            "description": "Engagement size. Omit to get all tiers."
+          }
+        },
+        "required": ["service_type"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "currency": { "type": "string", "const": "USD" },
+          "tiers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "scope": { "type": "string" },
+                "monthly_price_usd": { "type": "number" },
+                "setup_fee_usd": { "type": "number" },
+                "minimum_term_months": { "type": "integer" },
+                "purchasable_by_agent": {
+                  "type": "boolean",
+                  "$comment": "True only for fixed-price, fixed-scope offers you are happy to sell without a sales call."
+                }
+              },
+              "required": ["scope", "monthly_price_usd", "purchasable_by_agent"]
+            }
+          },
+          "valid_until": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    {
+      "name": "submit_agency_inquiry",
+      "title": "Send an inquiry to the agency",
+      "description": "Send a project inquiry to the agency on the person's behalf. Creates a lead and the agency will reply by email. Ask the person to confirm their details and consent before calling. Does not take payment.",
+      "$comment": "The one tool with side effects. readOnlyHint is false so agents and browsers treat it with care; the page should also ask the person to confirm (the draft spec has a user-interaction API for this).",
+      "annotations": { "readOnlyHint": false },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "contact_name": { "type": "string", "minLength": 1, "maxLength": 120 },
+          "contact_email": { "type": "string", "format": "email" },
+          "company": { "type": "string", "maxLength": 200 },
+          "service_needed": { "type": "string", "enum": ["seo", "ppc", "content", "analytics", "email", "not_sure"] },
+          "package_id": {
+            "type": "string",
+            "description": "Package from discover_seo_services / discover_ppc_services, if one was chosen."
+          },
+          "monthly_budget_usd": { "type": "number", "minimum": 0 },
+          "message": { "type": "string", "maxLength": 2000, "description": "The person's goals and context, in their words." },
+          "consent_to_contact": {
+            "type": "boolean",
+            "const": true,
+            "description": "Must be true: the person agreed to be contacted about this inquiry.",
+            "$comment": "Makes consent explicit and auditable. Check your regional marketing-consent rules."
+          },
+          "submitted_by_agent": {
+            "type": "string",
+            "maxLength": 120,
+            "description": "Name of the AI agent or app submitting, for attribution, e.g. 'Claude' or 'ChatGPT'."
+          }
+        },
+        "required": ["contact_name", "contact_email", "service_needed", "message", "consent_to_contact"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "inquiry_id": { "type": "string" },
+          "status": { "type": "string", "enum": ["received", "rejected"] },
+          "next_step": { "type": "string", "$comment": "Tell the agent what happens next, e.g. 'A strategist will email within 1 business day.'" }
+        },
+        "required": ["inquiry_id", "status", "next_step"]
+      }
+    }
+  ]
+}

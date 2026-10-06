@@ -69,7 +69,7 @@ scaffold:
 
 lint:
 	$(MARKDOWNLINT) "**/*.md" ".agents/*.md" ".github/**/*.md" --ignore node_modules
-	$(PY) -m compileall -q common scripts skills tests $(wildcard [0-9][0-9]-*)
+	$(PY) -m compileall -q common scripts skills tests examples $(wildcard [0-9][0-9]-*)
 
 clean:
 	find . -name "__pycache__" -type d -prune -exec rm -rf {} +
