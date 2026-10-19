@@ -5,7 +5,7 @@ This repo has two parts:
 1. **Agent-ready services kit (WebMCP + Visa Intelligent Commerce):** how a marketing service becomes
    discoverable and payable by AI agents.
 2. **B2B VAS marketing agent library:** eleven tested agent workflows for a B2B marketing team.
-   [DAY-IN-THE-LIFE.md](DAY-IN-THE-LIFE.md) shows how they fit a working week.
+   [VAS-GROWTH-PLAYBOOK.md](VAS-GROWTH-PLAYBOOK.md) shows how they work together to raise conversion.
 
 ## Start here
 
@@ -31,7 +31,7 @@ docs/
   README-STRUCTURE.md             This file
   AGENT-LIBRARY.md                Overview of the B2B VAS agent library
   DESIGN-DECISIONS.md             Why the agent library is built the way it is
-  DAY-IN-THE-LIFE.md              A sample week of B2B VAS growth work using the agents
+  VAS-GROWTH-PLAYBOOK.md          How the agents work together to raise VAS conversion
 
 examples/
   marketing-agency-webmcp-tools.json        Five tools for a fictional agency, annotated

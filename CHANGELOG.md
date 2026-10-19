@@ -12,7 +12,8 @@ All notable changes to this project are documented here. The format follows
   pages, competing pages, low click-through pages) and GEO/AEO AI answer visibility (mention and
   citation rates by engine and persona, share of voice), ranked into pages to create or improve.
   Sample data, unit tests and smoke cases included.
-- docs/DAY-IN-THE-LIFE.md: a sample week of B2B VAS growth work mapped to the agents and skills.
+- docs/VAS-GROWTH-PLAYBOOK.md: how the agents work together to raise VAS conversion, with the buying
+  journey, computed conversion math, six growth levers, guardrails, a measurement framework and a working week.
 - Agent-ready services kit: README thesis (WebMCP + Visa Intelligent Commerce), docs/GROWTH-STRATEGY.md,
   docs/WEBMCP-EXPLAINED.md, docs/VISA-INTELLIGENT-COMMERCE-EXPLAINED.md, IMPLEMENTATION-GUIDE.md,
   CASE-STUDIES.md and docs/README-STRUCTURE.md.

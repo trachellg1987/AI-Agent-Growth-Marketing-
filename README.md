@@ -92,13 +92,15 @@ on your processor's onboarding timeline, which this repo can't shorten.
 | [webmcp-skills/](webmcp-skills/) | Developers | Ready-to-adapt WebMCP tool definitions |
 | [visa-ic-skills/](visa-ic-skills/) | Developers | Payment function templates (merchant side and agent side) |
 | [docs/README-STRUCTURE.md](docs/README-STRUCTURE.md) | Everyone | Repo map and "start here" paths |
-| [docs/DAY-IN-THE-LIFE.md](docs/DAY-IN-THE-LIFE.md) | Growth marketers, hiring managers | A sample week of B2B VAS growth work, mapped to the agents and skills |
+| [docs/VAS-GROWTH-PLAYBOOK.md](docs/VAS-GROWTH-PLAYBOOK.md) | Growth marketers, hiring managers | How the agents work together to raise VAS conversion: the buying journey, the conversion math, six growth levers, measurement |
 
 ## Also in this repo: the B2B VAS marketing agent library
 
 Eleven tested agent workflows for a B2B Value Added Services marketing team (client briefs, offer-test
-analysis, backward planning, an SEO and GEO/AEO search-visibility review, a pre-launch prompt review), built on one rule: **code does the math, the
-model explains, a human approves.** See [docs/AGENT-LIBRARY.md](docs/AGENT-LIBRARY.md).
+analysis, backward planning, an SEO and GEO/AEO search-visibility review, a pre-launch prompt review),
+built on one rule: **code does the math, the model explains, a human approves.** See
+[docs/AGENT-LIBRARY.md](docs/AGENT-LIBRARY.md), and [docs/VAS-GROWTH-PLAYBOOK.md](docs/VAS-GROWTH-PLAYBOOK.md)
+for how they work together to drive more conversions.
 
 ```bash
 make test   # validate, unit tests, reference check, example check, smoke test (no API key needed)
