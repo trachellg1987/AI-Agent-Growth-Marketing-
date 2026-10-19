@@ -1,0 +1,37 @@
+checked_on,question,persona,engine,brand_mentioned,our_url_cited,competitor_mentions
+2026-10-05,How do issuers reduce card-not-present fraud?,head_of_fraud,chatgpt,yes,/risk/card-not-present-fraud,1
+2026-10-05,How do issuers reduce card-not-present fraud?,head_of_fraud,perplexity,yes,/risk/card-not-present-fraud,1
+2026-10-05,How do issuers reduce card-not-present fraud?,head_of_fraud,google_ai_overview,yes,/risk/card-not-present-fraud,1
+2026-10-12,How do issuers reduce card-not-present fraud?,head_of_fraud,chatgpt,yes,,1
+2026-10-12,How do issuers reduce card-not-present fraud?,head_of_fraud,perplexity,yes,/risk/card-not-present-fraud,1
+2026-10-12,How do issuers reduce card-not-present fraud?,head_of_fraud,google_ai_overview,no,,1
+2026-10-05,How can issuers cut false declines without raising fraud losses?,head_of_payments,chatgpt,yes,,2
+2026-10-05,How can issuers cut false declines without raising fraud losses?,head_of_payments,perplexity,no,,2
+2026-10-05,How can issuers cut false declines without raising fraud losses?,head_of_payments,google_ai_overview,yes,/risk/false-declines,2
+2026-10-12,How can issuers cut false declines without raising fraud losses?,head_of_payments,chatgpt,no,,2
+2026-10-12,How can issuers cut false declines without raising fraud losses?,head_of_payments,perplexity,yes,,2
+2026-10-12,How can issuers cut false declines without raising fraud losses?,head_of_payments,google_ai_overview,no,,2
+2026-10-05,What is real-time transaction risk scoring?,head_of_fraud,chatgpt,yes,/risk/real-time-risk-scoring,3
+2026-10-05,What is real-time transaction risk scoring?,head_of_fraud,perplexity,yes,,3
+2026-10-05,What is real-time transaction risk scoring?,head_of_fraud,google_ai_overview,no,,3
+2026-10-12,What is real-time transaction risk scoring?,head_of_fraud,chatgpt,yes,/risk/real-time-risk-scoring,3
+2026-10-12,What is real-time transaction risk scoring?,head_of_fraud,perplexity,yes,,3
+2026-10-12,What is real-time transaction risk scoring?,head_of_fraud,google_ai_overview,no,,3
+2026-10-05,How do you measure the ROI of a fraud tool?,procurement,chatgpt,no,,1
+2026-10-05,How do you measure the ROI of a fraud tool?,procurement,perplexity,no,,1
+2026-10-05,How do you measure the ROI of a fraud tool?,procurement,google_ai_overview,yes,,1
+2026-10-12,How do you measure the ROI of a fraud tool?,procurement,chatgpt,no,,1
+2026-10-12,How do you measure the ROI of a fraud tool?,procurement,perplexity,no,,1
+2026-10-12,How do you measure the ROI of a fraud tool?,procurement,google_ai_overview,no,,1
+2026-10-05,How can acquirers reduce the cost of handling chargebacks?,head_of_payments,chatgpt,yes,/acceptance/dispute-management,2
+2026-10-05,How can acquirers reduce the cost of handling chargebacks?,head_of_payments,perplexity,no,,2
+2026-10-05,How can acquirers reduce the cost of handling chargebacks?,head_of_payments,google_ai_overview,no,,2
+2026-10-12,How can acquirers reduce the cost of handling chargebacks?,head_of_payments,chatgpt,yes,,2
+2026-10-12,How can acquirers reduce the cost of handling chargebacks?,head_of_payments,perplexity,no,,2
+2026-10-12,How can acquirers reduce the cost of handling chargebacks?,head_of_payments,google_ai_overview,no,,2
+2026-10-05,Which fraud tools fit fintechs launching card programs?,head_of_cards,chatgpt,no,,3
+2026-10-05,Which fraud tools fit fintechs launching card programs?,head_of_cards,perplexity,no,,3
+2026-10-05,Which fraud tools fit fintechs launching card programs?,head_of_cards,google_ai_overview,no,,3
+2026-10-12,Which fraud tools fit fintechs launching card programs?,head_of_cards,chatgpt,no,,3
+2026-10-12,Which fraud tools fit fintechs launching card programs?,head_of_cards,perplexity,no,,3
+2026-10-12,Which fraud tools fit fintechs launching card programs?,head_of_cards,google_ai_overview,no,,3

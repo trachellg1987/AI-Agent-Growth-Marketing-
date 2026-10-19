@@ -1,0 +1,8 @@
+url,topic,role,target_question,links_to,impressions,clicks
+/risk/card-not-present-fraud,card-not-present fraud,pillar,How do issuers reduce card-not-present fraud?,/risk/false-declines;/risk/real-time-risk-scoring,4200,168
+/risk/false-declines,card-not-present fraud,cluster,How can issuers cut false declines without raising fraud losses?,/risk/card-not-present-fraud,2600,31
+/risk/real-time-risk-scoring,card-not-present fraud,cluster,What is real-time transaction risk scoring?,/risk/card-not-present-fraud,1900,76
+/risk/fraud-tool-roi,card-not-present fraud,cluster,How do you measure the ROI of a fraud tool?,,300,9
+/insights/what-is-risk-scoring,card-not-present fraud,cluster,What is real-time transaction risk scoring?,,700,14
+/acceptance/dispute-management,disputes and chargebacks,pillar,How can acquirers reduce the cost of handling chargebacks?,,1500,60
+/acceptance/chargeback-reason-codes,disputes and chargebacks,cluster,What do chargeback reason codes mean for merchants?,/acceptance/dispute-management,3100,34

@@ -8,6 +8,11 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- Agent 11 and skill `search-visibility`: SEO topical-map checks (pillar and cluster links, orphan
+  pages, competing pages, low click-through pages) and GEO/AEO AI answer visibility (mention and
+  citation rates by engine and persona, share of voice), ranked into pages to create or improve.
+  Sample data, unit tests and smoke cases included.
+- docs/DAY-IN-THE-LIFE.md: a sample week of B2B VAS growth work mapped to the agents and skills.
 - Agent-ready services kit: README thesis (WebMCP + Visa Intelligent Commerce), docs/GROWTH-STRATEGY.md,
   docs/WEBMCP-EXPLAINED.md, docs/VISA-INTELLIGENT-COMMERCE-EXPLAINED.md, IMPLEMENTATION-GUIDE.md,
   CASE-STUDIES.md and docs/README-STRUCTURE.md.
