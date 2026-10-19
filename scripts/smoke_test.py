@@ -45,6 +45,11 @@ CASES = [
      ["Static checks: 1/10 passed", "[FLAG] confidentiality / client-data rule",
       "[FLAG] claims need substantiation/approval"], []),
     ("10-agents-in-production", ["--dry-run"], 0, ["DRY RUN", "Prompt under review"], []),
+    ("11-search-visibility-agent", ["--stats-only"], 0,
+     ["Structure issues (9)", "1. CREATE PAGE", "share of voice 17%", "compete with each other"], []),
+    ("11-search-visibility-agent", ["--dry-run", "--top", "2"], 0,
+     ["DRY RUN", "COMPUTED", "Top 2 action(s) to draft"], []),
+    ("11-search-visibility-agent", ["--top", "0"], 2, ["Input error"], ["Traceback"]),
 ]
 
 

@@ -17,6 +17,7 @@ and agents load it from there. Statistics are never reimplemented elsewhere.
 | [funnel-planner](funnel-planner/SKILL.md) | Backward plan for new signed clients | yes | 07 |
 | [persona-messaging](persona-messaging/SKILL.md) | Value propositions per buyer persona | no | 02 |
 | [pilot-proposal](pilot-proposal/SKILL.md) | Pilot outline with success criteria | no | 05 |
+| [search-visibility](search-visibility/SKILL.md) | SEO topical-map checks and GEO/AEO answer visibility | yes | 11 |
 | [vas-capacity-planner](vas-capacity-planner/SKILL.md) | Net growth of live client programs | yes | 09, case study 02 |
 | [webinar-follow-up](webinar-follow-up/SKILL.md) | Follow-ups from a client webinar | no | 06 |
 
