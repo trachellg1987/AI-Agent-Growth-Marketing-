@@ -55,5 +55,5 @@ on two dates (36 checks):
   Fraud leaders see it most; the head-of-cards question about fintech card programs has no
   page at all, so it ranks first as `CREATE PAGE`.
 
-Related skill: [search-visibility](../skills/search-visibility/SKILL.md). How this fits a
-working week: [docs/DAY-IN-THE-LIFE.md](../docs/DAY-IN-THE-LIFE.md).
+Related skill: [search-visibility](../skills/search-visibility/SKILL.md). How this fits the wider
+growth approach: [docs/VAS-GROWTH-PLAYBOOK.md](../docs/VAS-GROWTH-PLAYBOOK.md).

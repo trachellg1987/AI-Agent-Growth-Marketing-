@@ -72,4 +72,4 @@ and a ranked action per buyer question.
 
 ## Used by
 
-`11-search-visibility-agent`, [docs/DAY-IN-THE-LIFE.md](../../docs/DAY-IN-THE-LIFE.md)
+`11-search-visibility-agent`, [docs/VAS-GROWTH-PLAYBOOK.md](../../docs/VAS-GROWTH-PLAYBOOK.md)
